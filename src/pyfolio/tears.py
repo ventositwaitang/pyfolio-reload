@@ -86,6 +86,7 @@ def create_full_tear_sheet(
     pos_in_dollars=True,
     header_rows=None,
     factor_partitions=FACTOR_PARTITIONS,
+    worst_drawdown=True, ## new added
 ):
     """
     Generate a number of tear sheets that are useful
@@ -535,7 +536,7 @@ def create_returns_tear_sheet(
         header_rows=header_rows,
     )
 
-    plotting.show_worst_drawdown_periods(returns)
+    plotting.show_worst_drawdown_periods(returns) if worst_drawdown=True ## 'new added:if worst_drawdown=True'
 
     vertical_sections = 11
 

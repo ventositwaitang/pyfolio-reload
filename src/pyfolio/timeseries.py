@@ -893,8 +893,7 @@ def get_max_drawdown_underwater(underwater):
     
     valley = underwater.index[np.argmin(underwater)] #valley = underwater.idxmin()  # end of the period
     # Find first 0
-    #peak = underwater[:valley][underwater[:valley] == 0].index[-1] 
-    peak = running_max[:valley][running_max==running_max[:valley].max()].index[0]
+    peak = running_max[:valley][running_max==running_max[:valley].max()].index[0] #peak = underwater[:valley][underwater[:valley] == 0].index[-1] 
     # peak = df_cum[df_cum==df_cum[:valley].max()].index[0] ## peak = ep.cum_returns(returns, 1.0)[ep.cum_returns(returns, 1.0)==ep.cum_returns(returns, 1.0)[:underwater.index[np.argmin(underwater)]].max()].index[0]
 
     # Find last 0

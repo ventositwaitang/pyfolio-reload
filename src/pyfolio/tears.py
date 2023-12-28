@@ -208,6 +208,7 @@ def create_full_tear_sheet(
         turnover_denom=turnover_denom,
         header_rows=header_rows,
         set_context=set_context,
+        worst_drawdown=worst_drawdown, ##new added
     )
 
     create_interesting_times_tear_sheet(
@@ -476,6 +477,7 @@ def create_returns_tear_sheet(
     turnover_denom="AGB",
     header_rows=None,
     return_fig=False,
+    worst_drawdown=True, ## new added
 ):
     """
     Generate a number of plots for analyzing a strategy's returns.

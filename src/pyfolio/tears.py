@@ -87,6 +87,7 @@ def create_full_tear_sheet(
     header_rows=None,
     factor_partitions=FACTOR_PARTITIONS,
     worst_drawdown=True, ## new added
+    monthly_returns_dist=True, ## new added
 ):
     """
     Generate a number of tear sheets that are useful
@@ -209,6 +210,7 @@ def create_full_tear_sheet(
         header_rows=header_rows,
         set_context=set_context,
         worst_drawdown=worst_drawdown, ##new added
+        monthly_returns_dist=monthly_returns_dist, ##new added
     )
 
     create_interesting_times_tear_sheet(
@@ -478,6 +480,7 @@ def create_returns_tear_sheet(
     header_rows=None,
     return_fig=False,
     worst_drawdown=True, ## new added
+    monthly_returns_dist=True, ## new added
 ):
     """
     Generate a number of plots for analyzing a strategy's returns.
@@ -636,7 +639,7 @@ def create_returns_tear_sheet(
 
     plotting.plot_monthly_returns_heatmap(returns, ax=ax_monthly_heatmap)
     plotting.plot_annual_returns(returns, ax=ax_annual_returns)
-    plotting.plot_monthly_returns_dist(returns, ax=ax_monthly_dist)
+    if monthly_returns_dist == True: plotting.plot_monthly_returns_dist(returns, ax=ax_monthly_dist) ## added option arg
 
     plotting.plot_return_quantiles(
         returns, live_start_date=live_start_date, ax=ax_return_quantiles

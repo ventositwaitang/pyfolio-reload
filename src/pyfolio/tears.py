@@ -536,7 +536,7 @@ def create_returns_tear_sheet(
         header_rows=header_rows,
     )
 
-    plotting.show_worst_drawdown_periods(returns) if worst_drawdown=True ## 'new added:if worst_drawdown=True'
+    if worst_drawdown=True: plotting.show_worst_drawdown_periods(returns)  ## 'new added:if worst_drawdown=True'
 
     vertical_sections = 11
 

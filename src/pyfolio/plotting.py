@@ -268,7 +268,7 @@ def plot_monthly_returns_dist(returns, ax=None, **kwargs):
         100 * monthly_ret_table,
         color="steelblue",
         alpha=0.80,
-        #bins='auto',#monthly_ret_table.size, #20,
+        bins='auto',#monthly_ret_table.size, #20,
         **kwargs,
     )
 

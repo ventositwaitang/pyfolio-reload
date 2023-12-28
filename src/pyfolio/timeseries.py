@@ -868,7 +868,7 @@ def calc_distribution_stats(x):
     )
 
 
-def get_max_drawdown_underwater(underwater):
+def get_max_drawdown_underwater(underwater,running_max): ## added arg running_max
     """
     Determines peak, valley, and recovery dates given an 'underwater'
     DataFrame.
@@ -928,7 +928,7 @@ def get_max_drawdown(returns):
     df_cum = ep.cum_returns(returns, 1.0)
     running_max = np.maximum.accumulate(df_cum)
     underwater = df_cum / running_max - 1
-    return get_max_drawdown_underwater(underwater)
+    return get_max_drawdown_underwater(underwater,running_max) ## added arg running_max
 
 
 def get_top_drawdowns(returns, top=10):
@@ -956,7 +956,7 @@ def get_top_drawdowns(returns, top=10):
 
     drawdowns = []
     for _ in range(top):
-        peak, valley, recovery = get_max_drawdown_underwater(underwater)
+        peak, valley, recovery = get_max_drawdown_underwater(underwater,running_max) ##added arg running_max
         # Slice out draw-down period
         if not pd.isnull(recovery):
             underwater.drop(underwater[peak:recovery].index[1:-1], inplace=True)
